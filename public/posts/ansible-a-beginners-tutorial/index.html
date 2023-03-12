@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Ansible: A Beginner&#39;s Tutorial. - Blog do Pherde!</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="First let&rsquo;s see what chatGPT says about Ansible:
+Ansible is an open-source automation tool used for IT tasks such as configuration management, application deployment, and task automation. It allows users to automate repetitive tasks across multiple servers and devices simultaneously, reducing the need for manual intervention and streamlining workflows.
+One of the key benefits of Ansible is its agentless architecture, which means that it can manage remote systems without requiring any additional software to be installed on those systems." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Ansible: A Beginner&#39;s Tutorial." />
+<meta property="og:description" content="First let&rsquo;s see what chatGPT says about Ansible:
+Ansible is an open-source automation tool used for IT tasks such as configuration management, application deployment, and task automation. It allows users to automate repetitive tasks across multiple servers and devices simultaneously, reducing the need for manual intervention and streamlining workflows.
+One of the key benefits of Ansible is its agentless architecture, which means that it can manage remote systems without requiring any additional software to be installed on those systems." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/ansible-a-beginners-tutorial/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-14T21:29:10-03:00" />
+<meta property="article:modified_time" content="2023-02-14T21:29:10-03:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible: A Beginner&#39;s Tutorial."/>
+<meta name="twitter:description" content="First let&rsquo;s see what chatGPT says about Ansible:
+Ansible is an open-source automation tool used for IT tasks such as configuration management, application deployment, and task automation. It allows users to automate repetitive tasks across multiple servers and devices simultaneously, reducing the need for manual intervention and streamlining workflows.
+One of the key benefits of Ansible is its agentless architecture, which means that it can manage remote systems without requiring any additional software to be installed on those systems."/>
+
+	
+        <link href="http://example.org/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://example.org/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"   />
+	
+
+	
+	
+
+	
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://example.org/">Blog do Pherde!</a>
+	</div>
+	<nav>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Ansible: A Beginner&#39;s Tutorial.</h1>
+			<div class="meta">Posted on Feb 14, 2023</div>
+		</div>
+		
+
+		<section class="body">
+			<p>First let&rsquo;s see what chatGPT says about Ansible:</p>
+<p>Ansible is an open-source automation tool used for IT tasks such as configuration management, application deployment, and task automation. It allows users to automate repetitive tasks across multiple servers and devices simultaneously, reducing the need for manual intervention and streamlining workflows.</p>
+<p>One of the key benefits of Ansible is its agentless architecture, which means that it can manage remote systems without requiring any additional software to be installed on those systems. This makes it easy to deploy and use, and also improves security by minimizing the number of attack surfaces.</p>
+<p>Overall, Ansible is a powerful tool for automating IT tasks and improving operational efficiency, making it a popular choice for organizations of all sizes.</p>
+<p>Okay, with the definition of what Ansible is, let&rsquo;s move on to two basic concepts: Playbook and Inventory.</p>
+<p>Inventory: An inventory is a file that defines a list of remote hosts or network devices that Ansible can connect to and manage. The inventory file is a simple text file that contains a list of hosts or IP addresses, grouped by different categories or groups. Usually the inventory is in the format of an .ini file.</p>
+<p>Playbook: A playbook is a file containing a series of tasks and instructions written in YAML format that are executed on one or more remote hosts. A playbook describes the desired state of a system, which is achieved by executing a series of tasks that perform specific actions, such as installing software, configuring services, or modifying system settings. Playbooks are a key component of Ansible, providing a simple and flexible way to automate complex tasks and manage system configurations. They are designed to be easy to read, write, and maintain.</p>
+<p>Okay, with the basic concepts described, let&rsquo;s practice a little.</p>
+<p>For our tests we initially need a virtual machine with an installed system, I chose to use QEMU as my vm and install the Alpine Linux system. But everything we do here can be done with Virtbualbox and Ubuntu, for example. The important thing is to install the system and be able to access it via ssh.</p>
+<p>With our VM running we are going to write our inventory, so for this we will create a file called inventory with the following content:</p>
+<p>firstserver ansible_host=192.168.122.91 ansible_connection=ssh ansible_user=username ansible_ssh_pass=somepass</p>
+<p>[serveralpine]
+firstserver</p>
+<p>Explaining:
+firstserver = name, like a variable, for your target host.
+ansible_host = address of your target.
+ansible_connection = connection type
+ansible_user = name of the user who will access the machine
+ansible_ssh_pass = user password
+[serveralpine] = group name, we can add as many hosts as we want into the group</p>
+<p>To test if our inventory is working let&rsquo;s ping it:</p>
+<p>ansible serveralpine -i inventory -m ping</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+  <div style="display:flex"></div>
+  <div class="footer-info">
+    2023  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+</div>
+    </body>
+</html>
