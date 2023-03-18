@@ -7,7 +7,7 @@ theme = 'archie'
 [params]
 mode="toggle"
 customcss = ["css/first.css"]
-subtitle = 'Notes from an old dev trying to learn new things!'
+subtitle = 'Just some notes from another dev trying to learn new things!'
 
 [[params.social]]
 name = "GitHub"
@@ -17,12 +17,17 @@ url = "https://github.com/pherde"
 [[params.social]]
 name = "Twitter"
 icon = "twitter"
-url = "https://twitter.com/pherde"
+url = "https://cwb.social/@fernando"
 
 [[params.social]]
 name = "Linkedin"
 icon = "linkedin"
-url = "https://linkedin.com/pherde"
+url = "https://www.linkedin.com/in/fernando-eckhardt-valle/"
+
+[[params.social]]
+name = "Mail"
+icon = "mail"
+url = "phervalle@proton.me"
 
 [[menu.main]]
 name = "Home"

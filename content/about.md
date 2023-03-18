@@ -9,3 +9,5 @@ I'm extremely passionate about Linux and open-source software, and I've spent co
 When I'm not working, you can usually find me tinkering with old video games or programming some stuffs for the Sega Genesis/Mega Drive. I'm a big fan of retro gaming and love exploring the history of video game development.
 
 Overall, I'm a dedicated professional with a strong interest in technology and a passion for learning (Well... another of my passions is literature, especially Brazilian). I believe that the present and the future of computing is in open-source software, I already contribute to some free software projects like freebsd and qemu, and I'm excited to be a part of this growing movement.
+
+If you want to talk to me, send me an email: phervalle[at]proton.me
