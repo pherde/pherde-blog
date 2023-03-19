@@ -6,6 +6,7 @@ theme = 'archie'
 
 [params]
 mode="toggle"
+favicon="https://upload.wikimedia.org/wikipedia/commons/1/1f/Bash_Logo_Favicon_Colored.svg"
 customcss = ["css/first.css"]
 subtitle = 'Just some notes from another dev trying to learn new things!'
 
