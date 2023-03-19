@@ -1,6 +1,6 @@
 ---
 title: "Ansible: A Beginner's Tutorial - Part 1."
-date: 2023-02-14T21:29:10-03:00
+date: 2023-03-19
 description: Hands on with Ansible basic concepts. Let's create an inventory and a playbook and play a little bit by automating tasks in virtual machines.
 draft: false
 tags: [ansible, devops]
