@@ -244,3 +244,55 @@ In place of *user* put the correct user.
 
 And that's it, now it is possible to run the playbook's tasks with become without having to pass the -K parameter, therefore, without having to type the sudo password.
 
+Now, to finish, let's install a package in one VM, for example, in VM1. Just to separate the things, let's create another playbook with the name **playbooks_apt.yaml** with the following content:
+```yaml
+- name: 'Manage packages'
+  hosts: vm1
+  become: true
+  tasks:
+    - name: 'Install VIM'
+      apt:
+        name: vim
+        update-cache: yes
+    - name: 'Where is vim?'
+      shell: whereis vim
+
+```
+After installing vim, the next task does a whereis looking for vim on the system.
+
+
+**Explaining (just new things):**
+
+apt: this module manages apt packages
+
+name: package's name (in this case, vim)
+
+update-cache: this directive is the same thing as *apt update*
+
+Just run the playbook:
+
+```shell
+$ ansible-playbook -i inventory playbook2.yaml -v
+```
+
+The output of the task **TASK [Where is vim?]** should look something like this:
+```shell
+"stdout": "vim: /usr/bin/vim /etc/vim /usr/share/vim", [...]
+```
+And if is necessary to remove the package, just add the **state** directive with **absent** value, like this:
+```yaml
+- name: 'Manage packages'
+  hosts: vm1
+  become: true
+  tasks:
+    - name: 'Remove VIM'
+      apt:
+        name: vim
+        update-cache: yes
+        state: absent
+    - name: 'Where is vim?'
+      shell: whereis vim
+```
+And that is the first part of this beginner's Ansible tutorial. When the next part is finished I will update this post and link the new post here.
+
+
