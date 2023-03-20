@@ -1,4 +1,4 @@
-baseURL = 'http://fernandovalle.dev.br/'
+baseURL = 'https://fernandovalle.dev.br/'
 languageCode = 'en-us'
 title = "Pherde's notes"
 
