@@ -40,7 +40,7 @@ I recommend using **virt-manager** on Ubuntu, it is the simplest way to work wit
 Don't forget to install Ansible in the host machine, in my case in ubuntu just:
 
 ```shell
-$sudo apt install ansible
+$ sudo apt install ansible
 ```
 
 ### Inventory
@@ -88,7 +88,7 @@ We have two solutions for this, the first is to access the VM by ssh in the stan
 [defaults]
 host_key_checking = False
 ```
-And now, we can ping to our VMs to check if the connection is ok, let's ping it:
+Now it's possible to ping to our VMs and check if the connection is ok, let's ping it:
 
 ```shell
 $ ansible -i inventory servers -m ping
@@ -121,7 +121,7 @@ Remember, playbook containing a series of tasks and instructions that are execut
 
 To get started, let's make a playbook that will just run one command in vm1, in this case the date command.
 
-Creat a file called playbook.yaml and put the following content:
+Create a file called `playbook.yaml` and put the following content:
 
 ```yaml
 - name: 'Execute a date command on vm1'
@@ -174,7 +174,7 @@ PLAY RECAP *********************************************************************
 vm1        : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
 ```
 
-Well, we execute the date command inside vm1, but is possible the read the output of date command executed inside vm1 directly in ansible ouput, just pass the parameter -v in ansible-playbook command line. To see this let's execute the date command in both VMs, we just need to chance in playbook file the value of key hosts to the name of server group, this way:
+Well, we execute the date command inside vm1, but is possible to read the output of date command executed inside vm1 directly in ansible output, just pass the parameter -v in ansible-playbook command line. To see this let's execute the date command in both VMs, we just need to chance in playbook file the value of key hosts to the name of server group, this way:
 
 ```yaml
 - name: 'Execute a date command on servers group'
@@ -184,7 +184,7 @@ Well, we execute the date command inside vm1, but is possible the read the outpu
       command: date
 
 ```
-And now, let's run the playbook with -v param:
+Run the playbook with -v param:
 ```shell
 $ ansible-playbook -i inventory playbook.yaml -v
 ```
@@ -195,7 +195,7 @@ Now you will be able to notice that below the name of the task there will be a l
 changed: [vm1] => {"changed": true, "cmd": ["date"], ... "stdout": "Thu Mar 16 01:35:18 UTC 2023",...
 ```
 
-We can create a playbook with many tasks, try to execute this:
+It's possible to create a playbook with many tasks, try to execute this:
 ```yaml
 - name: 'Execute commands on servers'
   hosts: servers
@@ -208,7 +208,7 @@ We can create a playbook with many tasks, try to execute this:
       shell: echo 'testing another string' | grep 'string' | wc -l
 ```
 
-What if we want to run a command like sudo? How would we do it? Simple, using the **become** directive. If we want all tasks to be executed with root privileges, just put **become** before tasks, below hosts, for example. But we can also put the **become** together with the task, as in the example below:
+What if we want to run a command with sudo? How would we do it? Simple, using the **become** directive. If we want all tasks to be executed with root privileges, just put **become** before tasks, below hosts, for example. But we can also put the **become** together with the task, as in the example below:
 
 ```yaml
 - name: 'Execute a date command on vm1'
@@ -242,9 +242,9 @@ user ALL=(ALL) NOPASSWD: ALL
 ```
 In place of *user* put the correct user.
 
-And that's it, now it is possible to run the playbook's tasks with become without having to pass the -K parameter, therefore, without having to type the sudo password.
+Now it is possible to run the playbook's tasks with become without having to pass the -K parameter, therefore, without having to type the sudo password.
 
-Now, to finish, let's install a package in one VM, for example, in VM1. Just to separate the things, let's create another playbook with the name **playbooks_apt.yaml** with the following content:
+Now, to finish, let's install a package in one VM, for example, in VM1. Just to separate the things, let's create another playbook with the name `playbooks_apt.yaml` with the following content:
 ```yaml
 - name: 'Manage packages'
   hosts: vm1
@@ -279,7 +279,7 @@ The output of the task **TASK [Where is vim?]** should look something like this:
 ```shell
 "stdout": "vim: /usr/bin/vim /etc/vim /usr/share/vim", [...]
 ```
-And if is necessary to remove the package, just add the **state** directive with **absent** value, like this:
+If it is necessary to remove the package, just add the **state** directive with **absent** value, like this:
 ```yaml
 - name: 'Manage packages'
   hosts: vm1
@@ -293,6 +293,6 @@ And if is necessary to remove the package, just add the **state** directive with
     - name: 'Where is vim?'
       shell: whereis vim
 ```
-And that is the first part of this beginner's Ansible tutorial. When the next part is finished I will update this post and link the new post here.
+That is it... the first part of this beginner's Ansible tutorial. When the next part is finished I will update this tutorial and link the new post here.
 
 
